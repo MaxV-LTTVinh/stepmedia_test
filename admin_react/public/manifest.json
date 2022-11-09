@@ -1,0 +1,9 @@
+{
+  "theme_color": "#1975ff",
+  "background_color": "#f2f5f9",
+  "display": "standalone",
+  "start_url": ".",
+  "short_name": "White",
+  "name": "White React Typescript Admin Dashboard",
+  "icons": []
+}
