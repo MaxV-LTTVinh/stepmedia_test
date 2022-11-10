@@ -16,7 +16,7 @@ function* fetchStudents(action: PayloadAction<IFilterBodyRequest>) {
 
 function* deleteStudents() {
   try {
-    let res: IStudentModel[] = yield call(studentApi.delete);
+    yield call(studentApi.delete);
     yield put(studentActions.deleteStudentsSuccess());
     yield put(studentActions.fetchStudents());
   } catch (error) {

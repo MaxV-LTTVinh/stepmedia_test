@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 const axiosClient = (contentType: any = "application/json") => {
   const axiosClient = axios.create({
-    baseURL: "https://localhost:5000/api",
+    baseURL: process.env.REACT_APP_API_ENDPOINT,
     headers: {
       "Content-Type": contentType,
     },

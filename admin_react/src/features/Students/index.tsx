@@ -218,7 +218,6 @@ const mockData = [
 ];
 
 export default function StudentPage(props: IStudentPageProps) {
-  //   const filter = useAppSelector(selectFilterStudentRequest);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(studentActions.fetchStudents(null));
@@ -246,11 +245,6 @@ export default function StudentPage(props: IStudentPageProps) {
               Student header
               {/* <Box sx={{ display: "flex" }}></Box> */}
             </Typography>
-            {/* <Hidden only={tableIsLoading}> */}
-            <CircularProgress
-              sx={{ display: tableIsLoading ? "block" : "none" }}
-            />
-            {/* </Hidden> */}
           </Grid>
           <Grid item>
             <Button
@@ -297,8 +291,8 @@ export default function StudentPage(props: IStudentPageProps) {
           alignItems="stretch"
           spacing={3}
         >
-          <Grid item xs={12}>
-            <StudentTable />
+          <Grid item xs={12} display="flex" justifyContent="center">
+            {tableIsLoading ? <CircularProgress /> : <StudentTable />}
           </Grid>
         </Grid>
       </Container>

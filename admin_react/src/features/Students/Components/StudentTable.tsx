@@ -1,4 +1,3 @@
-import { useTheme } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,10 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import dayjs from "dayjs";
-import * as React from "react";
-import { useEffect } from "react";
-import { useNavigate } from "react-router";
-import { useAppDispatch, useAppSelector } from "src/app/hooks";
+import { useAppSelector } from "src/app/hooks";
 import { selectStudentTable } from "../studentSlice";
 
 interface Column {
@@ -33,25 +29,7 @@ const columns: Column[] = [
 export interface IStudentTableProps {}
 
 export default function StudentTable(props: IStudentTableProps) {
-  const navigate = useNavigate();
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const dispatch = useAppDispatch();
-
-  const handleChangePage = (event: unknown, newPage: number) => {
-    setPage(newPage);
-  };
   const tableStudents = useAppSelector(selectStudentTable);
-  useEffect(() => {
-    console.log("tableStudents", tableStudents);
-  }, [dispatch, tableStudents]);
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
-  const theme = useTheme();
 
   return (
     <Paper sx={{ width: "100%" }}>
@@ -92,15 +70,6 @@ export default function StudentTable(props: IStudentTableProps) {
             })}
           </TableBody>
         </Table>
-        {/* <TablePagination
-          rowsPerPageOptions={[10, 25, 100, { value: -1, label: "All" }]}
-          component="div"
-          count={tableStudents.pagination.totalRows}
-          rowsPerPage={tableStudents.pagination.pageSize}
-          page={tableStudents.pagination.pageIndex - 1}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        /> */}
       </TableContainer>
     </Paper>
   );
